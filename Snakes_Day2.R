@@ -23,6 +23,20 @@ ggplot(data = snakes, aes(x = day, y = openings)) +
                size = 2.0, linetype = "solid", show.legend = F) +
   geom_boxplot(aes(fill = day), alpha = 0.6, show.legend = F) + 
   geom_jitter(width = 0.05)
+ 
+ggplot(data = snakes, aes(x = snake, y = openings)) +
+  geom_point() +
+  geom_line(aes(group = day))
+
+library(ggplot2)
+#Basic barplot
+p<-ggplot(data = snakes, aes(x = snake, y = openings)) +
+  geom_bar(stat="identity")
+p
+
+ggplot(data = snakes, aes(x = openings)) +
+  geom_histogram(aes(fill = day), position = "dodge", binwidth = 100) +
+  labs(x = "snake", y = "count")
 
 snakes.aov <- aov(openings ~ day + snake, data = snakes)
 summary(snakes.aov)
