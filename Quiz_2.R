@@ -31,6 +31,12 @@ ggplot(data = Orange, aes(x = age, fill = sample)) +
   geom_density(aes(y = 1*..count.., fill = circumference), colour = NA, alpha = 0.4) +
   labs(x = "Tree")
 
+ggplot(Orange, aes(x=age)) + geom_histogram()
+
+ggplot(Orange, aes(x=age)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="white")+
+  geom_density(alpha=.2, fill="#FF6666")
+
 shapiro.test(Orange)
 
 
@@ -50,4 +56,6 @@ ToothGrowth_ <- data.frame(ToothGrowth = c(rnorm(n = 1000, mean = 10, sd = 3),
 # Separate date column
 SACTN_daily_v4.2 %>% separate(date, c("Year","Month","Day"), sep = "-")
 
-#
+#group data
+
+group_by(SACTN_daily_v4.2)
